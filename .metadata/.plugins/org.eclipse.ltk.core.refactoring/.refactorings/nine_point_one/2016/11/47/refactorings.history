@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;nine_point_one_CTCI.java&apos; to &apos;CTCI/src/DPnREC&apos;&#x0D;&#x0A;- Original project: &apos;nine_point_one&apos;&#x0D;&#x0A;- Destination element: &apos;CTCI/src/DPnREC&apos;&#x0D;&#x0A;- Original element: &apos;nine_point_one_CTCI.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=CTCI/src&lt;DPnREC" element1="/src&lt;{nine_point_one_CTCI.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1479271146868" units="1" version="1.0"/>
+</session>

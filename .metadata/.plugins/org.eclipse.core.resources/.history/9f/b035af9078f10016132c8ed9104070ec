@@ -1,0 +1,12 @@
+
+public class Solution {
+
+	public static void main(String[] args){
+		sysoufindsmaller(10987598023);
+	}
+
+	private static void sysofindsmaller(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+}

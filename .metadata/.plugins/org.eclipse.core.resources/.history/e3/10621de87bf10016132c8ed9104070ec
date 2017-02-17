@@ -1,0 +1,24 @@
+
+public class Solution {
+
+	public static void main(String[] args){
+		findsmaller(598023);
+	}
+
+	private static void findsmaller(int num) {
+		String s = String.valueOf(num);
+		int len = s.length();
+		
+		for(int i=len-2;i>=0;i--){
+			int one = Integer.valueOf(s.charAt(i));
+			int two = Integer.valueOf(s.charAt(i+1));
+			if(Integer.valueOf(s.indexOf(i))>Integer.valueOf(s.indexOf(i+1))){
+				char old = s.charAt(i);
+				char now = s.charAt(len-1);
+				String sortStr = s.substring(i, len-1);
+				System.out.println(sortStr);
+				//s = s.substring(0, i)+s.substring(i,i+1)+
+			}
+		}
+	}
+}

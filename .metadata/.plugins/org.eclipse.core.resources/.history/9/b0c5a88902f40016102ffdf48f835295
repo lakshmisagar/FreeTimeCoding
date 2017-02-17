@@ -1,0 +1,56 @@
+import java.util.HashMap;
+
+
+public class Solution {
+
+	private static void printpairs(int[] a, int n) {
+		quicksort(a, 0, a.length-1);
+		for(int i=0;i<a.length;i++){
+			System.out.println(a[i]);
+		}
+		
+	}
+	
+	private static void quicksort(int[] a, int left, int right) {
+		if(left<right){
+			int s = partition(a,left,right);
+			quicksort(a, left, s-1);
+			quicksort(a, s+1, right);
+		}
+	}
+
+	private static int partition(int[] a, int left, int right) {
+		int pivot = a[left];
+		int j=right;
+		int i = left;
+		while(i<=j){
+			while(a[i]>=pivot){
+				i++;
+			}
+			while(a[j]<= pivot){
+				j--;
+			}
+			if(i<=j){
+				swap(a,i,j);
+				i++;
+				j--;
+			}
+		}
+		return j;
+	}
+
+	private static void swap(int[] a,int i, int j) {
+		int temp = a[i];
+		a[i] = a[j];
+		a[j] = temp;
+	}
+
+	public static void main(String[] args) {
+		int A[] = {1, 4, 45, 6, 10, 8};
+	    int n = 16;
+	    printpairs(A,n);
+	}
+
+	
+	
+}

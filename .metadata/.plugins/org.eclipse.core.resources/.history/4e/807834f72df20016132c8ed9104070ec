@@ -1,0 +1,9 @@
+
+public class Solution {
+
+	public static void main(String[] args) {
+		float x = 2;
+		int y = -3;
+		System.out.println(powerCal(x,y));
+	}
+}

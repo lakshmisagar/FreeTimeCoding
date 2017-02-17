@@ -1,0 +1,55 @@
+class Node{
+		int data;
+		Node left, right;
+		
+		Node(int item){
+			this.data = item;
+			left = null;
+			right = null;
+		}
+	}
+
+class Tree {
+	
+	static Node root;
+	static boolean found = false;
+	static int height=1;
+	
+	private static int LCA(int , int r) {
+	
+		int l_height = height(l,root);
+		//int r_height = height(r,root);
+		System.out.println(l_height);
+		return 0;
+	}
+	
+	private static int height(int 2, Node start) {
+		if(start==null)return 0;
+		if(start.data == r) {
+			found = true;
+		}
+		if(!found){
+			
+			height  = 1+height(r,start.left);
+			height = 1+height(r,start.right);
+		}
+		return height;
+	}
+
+	public static void main(String[] args) {
+		Tree tree = new Tree();
+		tree.root = new Node(1);
+		tree.root.left = new Node(2);
+		tree.root.right = new Node(3);
+	    tree.root.left.left = new Node(4);
+	    tree.root.left.right = new Node(5);
+	    tree.root.right.left = new Node(6);
+	    tree.root.right.right = new Node(7);
+	    
+	    System.out.println(LCA(1,5));
+	}
+
+
+	
+	
+}

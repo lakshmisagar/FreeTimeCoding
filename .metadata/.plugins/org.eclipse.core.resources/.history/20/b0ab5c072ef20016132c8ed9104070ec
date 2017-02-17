@@ -1,0 +1,28 @@
+
+public class Solution {
+
+	private static float powerCal(float x, int y) {
+		float temp;
+		if(y == 0)return 1;
+		temp = powerCal(x,y/2);
+		
+		if(y%2 == 0){
+			return temp*temp;
+		}else{
+			if(y>0){
+				return x*temp*temp;
+			}else{
+				return (temp*temp)/x;
+			}
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		float x = 2;
+		int y = -3;
+		System.out.println(powerCal(x,y));
+	}
+
+	
+}

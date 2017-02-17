@@ -1,0 +1,92 @@
+class ATOF{
+
+private static float asciiToFloat(String strNum) throws Exception{
+	float result = 0f;
+	int E_index = strNum.indexOf('E');
+	if(E_index == -1){
+		E_index = strNum.indexOf('e');
+	}
+	if(E_index == -1){
+		result = withoutE(strNum);
+	}else{
+		result = (float) (withoutE(strNum.substring(0,E_index)) * (Math.pow(10,withoutE(strNum.substring(E_index+1)))));
+	}
+		
+	return result;
+
+}
+
+private static float withoutE(String strNum) throws Exception{
+	float temp_result = 0f;
+	//Check if negative
+	if(strNum.charAt(0) == '-'){
+		return -withoutE(strNum.substring(1));
+	}
+	
+	int dot_index = strNum.indexOf('.');
+	if(dot_index == -1){
+	//No dot present , so just return integer number
+	temp_result = getInt(strNum);
+	}else{
+		float beforeDot = getInt(strNum.substring(0,dot_index));
+		float afterDot = getInt(strNum.substring(dot_index+1));
+		
+		//to get the count of digits to raise pow to divide number
+		float afterDot_temp = afterDot;
+		int countDigits = 0;
+		while(afterDot_temp > 10){
+			countDigits++;
+			afterDot_temp = afterDot_temp/10;
+		}
+		countDigits++;
+		
+		temp_result = (float)(beforeDot+afterDot*(Math.pow(10, -countDigits)));
+	  }
+	  
+	  return temp_result;
+} 
+
+private static float getInt(String strNum) throws Exception{
+	if(strNum.length() == 0) return 0;
+	
+	float int_result = 0f;
+	for(int i=0;i<strNum.length();i++){
+		int_result = int_result*10 + getDigit(strNum.charAt(i));
+	}
+	return int_result;
+}
+
+private static float getDigit(char c) throws Exception{
+	switch(c){
+		case '0':
+			return 0;
+		case '1':
+			return 1;
+		case '2':
+			return 2;
+		case '3':
+			return 3;
+		case '4':
+			return 4;
+		case '5':
+			return 5;
+		case '6':
+			return 6;
+		case '7':
+			return 7;
+		case '8':
+			return 8;
+		case '9':
+			return 9;
+		default:
+			throw new Exception();
+			
+	}
+}
+
+public static void main(String[] args) throws Exception{
+	System.out.println(asciiToFloat("3.5"));
+}
+
+
+}

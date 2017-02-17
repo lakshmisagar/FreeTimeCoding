@@ -1,0 +1,45 @@
+import java.util.Arrays;
+
+
+public class Solution {
+
+	public static void main(String[] args){
+		findsmaller(598023);
+	}
+
+	private static void findsmaller(int num) {
+		String s = String.valueOf(num);
+		int len = s.length();
+		String sortStr = null;
+		String result = null;
+		int l;
+		for(int i=len-2;i>=0;i--){
+			l = Character.digit(s.charAt(i),10);
+			int r = Character.digit(s.charAt(i+1),10);
+			if(l>r){
+			    sortStr = s.substring(i, len-1);
+			    result = s.substring(0,i);
+				break;
+			}
+		}
+		int i= sortStr.length();
+		if(Character.digit(sortStr.charAt(i),10)<l){
+			sortStr = sortStr+String.valueOf(l);
+			System.out.println(sortStr);
+		}else{
+			i--;
+			while(i!=0){
+				if(Character.digit(sortStr.charAt(i),10)<l){
+					
+				}
+				i--;
+			}
+		}
+		Arrays.sort(sortarr);
+		System.out.println(sortarr[0]);
+		result = result+s.charAt(s.length()-1)+Arrays.toString(sortarr);
+		
+		System.out.println(result);
+		
+	}
+}

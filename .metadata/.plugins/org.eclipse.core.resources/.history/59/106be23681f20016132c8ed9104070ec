@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+
+public class Solution {
+
+	private static ArrayList<ArrayList<String>> group(ArrayList<String> list){
+		ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+		ArrayList<String> arrayList = new ArrayList<String>();
+		
+		HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
+		for(int i=0;i<list.size();i++){
+			arrayList = map.get(getStringCode(list.get(i)));
+			arrayList.add(list.get(i));
+			map.put(getStringCode(list.get(i)),arrayList);
+			arrayList = null;
+		}
+		for (Map.Entry<String, ArrayList<String>> entry: map.entrySet()) {
+			result.add(entry.getValue());
+		}
+		return result;
+		
+	}
+
+	private static String getStringCode(String string) {
+		char[] arr = string.toCharArray();
+		char[] result = new char[string.length()*2];
+		int[] alphabet = new int[26];
+		for(int i=0;i<arr.length;i++){
+			alphabet[string.charAt(i)-'a']++;
+		}
+		for(int i=0;i<arr.length;i++){
+			result[i]=string.charAt(i);
+			result[i+1]= (char) alphabet[string.charAt(i)-'a'];
+		}
+		return result.toString();
+	}
+	
+	public static void main(String[] args) {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("Sagar");
+		list.add("asgar");
+		list.add("ragas");
+		list.add("srini");
+		list.add("inisr");
+		ArrayList<ArrayList<String>> result = group(list);
+		for(int i=0;i<result.size();i++){
+		   for(int j =0;j<result.get(i).size();j++){
+			   System.out.print(result.get(i).get(j)+"   ");
+		   }
+		   System.out.println();
+		}
+	}
+}
