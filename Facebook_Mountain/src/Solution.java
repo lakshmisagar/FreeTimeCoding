@@ -1,0 +1,64 @@
+
+public class Solution {
+
+	static int max = 0;
+	private static void findPeak(int[][] matrix, int x, int y, int row, int col, int[][] sol) {
+		
+		
+		int cur = matrix[x][y];
+		
+		if(x>=0 && y>=0 && x<=row-1 && y<=col-1 ){
+			sol[x][y] = 1;
+			if(matrix[x][y]>max)
+				max = matrix[x][y];
+			
+			if(x+1<row){
+				if(sol[x+1][y]==0 && Math.abs((matrix[x+1][y]-cur))<=1){
+					findPeak(matrix, x+1, y, row, col,sol);
+				}
+			}
+			if (y+1<col){
+				if(sol[x][y+1]==0 &&Math.abs((matrix[x][y+1]-cur))<=1){
+					findPeak(matrix, x, y+1, row, col,sol);
+					}
+			}
+			if(y-1>=0){
+				if(sol[x][y-1]==0 && Math.abs((matrix[x][y-1]-cur))<=1){
+					findPeak(matrix, x, y-1, row, col,sol);
+				}
+			}
+			if(x-1>=0){
+				if(sol[x-1][y]==0 && Math.abs((matrix[x-1][y]-cur))<=1){
+					findPeak(matrix, x-1, y, row, col,sol);
+				}
+			}
+			
+		}
+		
+		return;
+	}
+	
+	public static void main(String[] args) {
+		int[][] matrix = {
+				 {0, 0, 1, 5},
+			   	 {5, 5, 2, 4},
+				 {5, 3, 3, 3},
+				 {5, 4, 3, 3},
+				 {5, 6, 4, 3},
+				 {6, 2, 5, 3},
+
+		};
+		int row = matrix.length;
+		int col = matrix[0].length;
+		
+		int [][]sol = new int[row][col];
+		for(int i = 0;i<row;i++){
+			for(int j =0;j<col;j++){
+				sol[i][j] = 0;
+			}
+		}
+		
+		findPeak(matrix,0,0,row,col,sol);
+		System.out.println(max);
+	}
+}
